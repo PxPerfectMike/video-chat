@@ -1,6 +1,12 @@
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
 .container {
-  display: grid;
-  grid-template-columns: 7fr 3fr;
+  display: flex;
+  flex-direction: reverse;
 }
 
 .myId {
@@ -14,11 +20,8 @@
       #e2e2e2,
       #c9d6ff);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
   padding: 2rem;
-  display: grid;
-  justify-content: center;
-  align-content: center;
+
 }
 
 .call-button {
@@ -27,17 +30,17 @@
 }
 
 .video-container {
-  display: grid;
+  /* display: grid;
   grid-template-columns: 1fr 1fr;
   justify-content: center;
   align-content: center;
   margin-top: 10rem;
-  margin-left: 10rem;
+  margin-left: 10rem; */
 }
 
 .caller {
-  text-align: center;
-  color: #fff;
+  /* text-align: center;
+  color: #fff; */
 }
 
 body {
@@ -49,4 +52,19 @@ body {
       #8e54e9,
       #4776e6);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+/* begin stream window css */
+
+.myWindow {
+  display: grid;
+  grid-template-columns: 4fr 2fr;
+  width: 800px;
+  height: auto;
+  border-radius: 7px;
+
+}
+
+.myNameTextField {
+  margin-bottom: 0.6rem !important;
 }

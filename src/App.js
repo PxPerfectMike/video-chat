@@ -99,22 +99,22 @@ function App() {
       <div className="container">
         <div className="video-container">
           <div className="video">
-            {stream && <video playsInline muted ref={myVideo} autoPlay style={{ width: "300px" }} />}
+            {stream && <video className="myWindow" playsInline muted ref={myVideo} autoPlay />}
           </div>
           <div className="video">
             {callAccepted && !callEnded ?
-              <video playsInline ref={userVideo} autoPlay style={{ width: "300px" }} /> :
+              <video playsInline ref={userVideo} autoPlay style={{ width: "500px" }} /> :
               null}
           </div>
         </div>
         <div className="myId">
           <TextField
+            className="myNameTextField"
             id="filled-basic"
             label="Name"
             variant="filled"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            style={{ marginBottom: "20px" }}
           />
           <CopyToClipboard text={me} style={{ marginBottom: "2rem" }}>
             <Button variant="contained" color="primary" startIcon={<AssignmentIcon fontSize="large" />}>
