@@ -29,19 +29,19 @@
   margin-top: 2rem;
 }
 
-.video-container {
-  /* display: grid;
+/* .video-container {
+  display: grid;
   grid-template-columns: 1fr 1fr;
   justify-content: center;
   align-content: center;
   margin-top: 10rem;
-  margin-left: 10rem; */
-}
+  margin-left: 10rem;
+} */
 
-.caller {
-  /* text-align: center;
-  color: #fff; */
-}
+/* .caller {
+  text-align: center;
+  color: #fff; 
+} */
 
 body {
   background: #4776e6;
