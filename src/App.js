@@ -1,13 +1,9 @@
-import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton";
-import TextField from "@material-ui/core/TextField";
-import AssignmentIcon from "@material-ui/icons/Assignment";
-import PhoneIcon from "@material-ui/icons/Phone";
 import React, { useEffect, useRef, useState } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import Peer from "simple-peer";
 import io from "socket.io-client";
 import "./App.css";
+
 
 
 const socket = io.connect('http://localhost:5000');
@@ -94,106 +90,83 @@ function App() {
     connectionRef.current.destroy();
   }
 
-  function windowFill() {
-    document.getElementsByTagName("body").style.height = "100%";
-    document.getElementsByTagName("body").style.color = "#000000";
-  }
-
-  const windowHeight = window.innerHeight;
-  const windowWidth = window.innerWidth;
-  // const videoDimensions = {
-  //   height: (windowHeight / 100) * 10,
-  //   width: (windowWidth / 100) * 10
-  // }
-  console.log(windowHeight, windowWidth);
-
-
 
 
 
 
   return (
     <>
-      <div className="container">
-        <h1 className="titleHeader" onLoad={windowFill}>Quick Chat</h1>
-        <div className="video-container">
-          <div className="videoWindow" onLoad={windowFill}>
-            {stream &&
-              <video
-                className="myWindow"
-                playsInline muted
-                ref={myVideo}
-                autoPlay
-              />
-            }
-          </div>
+      <div className="headerDiv">
+        <h1 className="titleHeader">Quick Chat</h1>
+      </div>
+      <div className="myWindow" >
+        {stream &&
+          <video
+            className="myStream"
+            playsInline muted
+            ref={myVideo}
+            autoPlay
+          />
+        }
+      </div>
 
-          <div className="videoWindow">
-            {callAccepted && !callEnded ?
-              <video
-                className="userWindow"
-                playsInline ref={userVideo}
-                autoPlay /> : null
-            }
-          </div>
-        </div>
-        <div className="myId">
-          <p className="myIdText">Your ID: {me}</p>
-          <CopyToClipboard text={me}>
-            <Button
-              className="copyButton"
+      <div className="userWindow">
+        {callAccepted && !callEnded ?
+          <video
+            className="userStream"
+            playsInline ref={userVideo}
+            autoPlay /> : null
+        }
+      </div>
+
+      <div className="myId">
+        <p className="myIdText">Your ID: {me}</p>
+        <CopyToClipboard text={me}>
+          <button
+            className="copyButton"
+          >
+            Copy ID
+          </button>
+        </CopyToClipboard>
+
+        <input type={"text"} className="nameInput" placeholder="Enter your name" value={idToCall} onChange={(e) => setIdToCall(e.target.value)}
+
+        />
+        <div className="call-button" style={{ margin: "auto" }}>
+          {callAccepted && !callEnded ? (
+            <button
               variant="contained"
               color="primary"
-              startIcon={<AssignmentIcon fontSize="large" />
-              }>
-              Copy ID
-            </Button>
-          </CopyToClipboard>
-
-          <TextField
-            className="callField"
-            id="outlined-basic"
-            label="ID to call"
-            variant="outlined"
-            value={idToCall}
-            onChange={(e) => setIdToCall(e.target.value)}
-          />
-          <div className="call-button" style={{ margin: "auto" }}>
-            {callAccepted && !callEnded ? (
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={leaveCall}
-              >
-                End Call
-              </Button>
-            ) : (
-              <IconButton
-                color="primary"
-                aria-label="call"
-                onClick={() => callUser(idToCall)}
-              >
-                <PhoneIcon fontSize="large" />
-              </IconButton>
-            )}
-            {idToCall}
-          </div>
-        </div>
-        <div>
-          {receivingCall && !callAccepted ? (
-            <div className="caller">
-              <h1 >{name} is calling...</h1>
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={answerCall}
-              >
-                Answer
-              </Button>
-            </div>
-          ) : null}
+              onClick={leaveCall}
+            >
+              End Call
+            </button>
+          ) : (
+            <button
+              color="secondary"
+              aria-label="call"
+              onClick={() => callUser(idToCall)}
+            >call
+            </button>
+          )}
+          {idToCall}
         </div>
       </div>
+      <div>
+        {receivingCall && !callAccepted ? (
+          <div className="caller">
+            <h1 >{name} is calling...</h1>
+            <button
+              variant="contained"
+              color="primary"
+              onClick={answerCall}
+            >
+              Answer
+            </button>
+          </div>
+        ) : null}
+      </div>
+
     </>
   )
 }

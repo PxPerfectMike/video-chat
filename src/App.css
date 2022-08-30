@@ -8,4 +8,38 @@ html {
     --QCredSecondary: #9a004d;
 }
 
-@media screen and (max-width: 1280px) {}
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+}
+
+@media screen and (orientation: portrait) {
+    .videoWindow .myWindow {
+        position: absolute;
+        height: 100vh !important;
+        width: 100vh !important;
+        left: 50%;
+        top: 0;
+        transform: translateX(-50%);
+    }
+}
+
+.headerDiv {
+    display: flex;
+    justify-content: center;
+}
+
+.titleHeader {
+    margin: 0 auto;
+    text-align: center;
+    font-size: 3rem;
+    margin: 1rem auto 4rem auto;
+    font-family: Sacramento, cursive, sans-serif, monospace;
+}
