@@ -44,6 +44,8 @@ const signInWithGoogle = async () => {
                 name: user.displayName,
                 authProvider: "google",
                 email: user.email,
+                photoURL: user.photoURL,
+                createdAt: new Date(),
             });
         }
     } catch (err) {

@@ -30,16 +30,3 @@ body {
         transform: translateX(-50%);
     }
 }
-
-.headerDiv {
-    display: flex;
-    justify-content: center;
-}
-
-.titleHeader {
-    margin: 0 auto;
-    text-align: center;
-    font-size: 3rem;
-    margin: 1rem auto 4rem auto;
-    font-family: Sacramento, cursive, sans-serif, monospace;
-}

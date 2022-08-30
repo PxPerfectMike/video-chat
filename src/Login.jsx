@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth, signInWithGoogle } from "./firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import "./App.css";
+import "./Login.css";
 
 const Login = () => {
     const [user, loading] = useAuthState(auth);
@@ -14,9 +14,13 @@ const Login = () => {
     }, [user, loading, navigate]);
 
     return (
+        
         <div className="login">
-            <div className="login__container">
-                <button className="login__btn login__google" onClick={signInWithGoogle}>
+            <div className="headerDiv">
+                <h1 className="titleHeader">Quick Chat</h1>
+            </div>
+            <div className="login_container">
+                <button className="login_btn login_google" onClick={signInWithGoogle}>
                     Login with Google
                 </button>
                 <div>
