@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { auth, logout } from './firebase';
 import './App.css';
 import './loading.png';
+// import { colorCount } from './helpers';
 
 const socket = io.connect('http://localhost:5000');
 
@@ -102,9 +103,55 @@ export default function Chat() {
 		connectionRef.current.destroy();
 	};
 
+	// class bgColorizer {
+	// 	constructor(element) {
+	// 		//can put while loop here if needed while bgcolorizer exists
+	// 		if (element) {
+	// 			document.querySelector(element);
+	// 		}
+	// 		const elements = [];
+	// 		for (let i = 0; i < 360; i++) {
+	// 			elements.push(document.querySelector(element));
+	// 		}
+	// 		for (element of elements) {
+	// 			element.setProperty('--colorAdderBase', colorCount());
+	// 		}
+	// 	}
+	// }
+
+	// new bgColorizer('.bgGradient');
+
+	// const bgColorizerooo = document.querySelector('.bgGradient');
+	// bgColorizer.style.setProperty('--colorAdderBase', colorCount());
+
+	// setInterval(function () {
+	// 	const colorArr = [];
+	// 	for (let i = 0; i < 360; i++) {
+	// 		colorArr.push(document.div.style.setProperty('--colorAdderBase', i));
+	// 		if (i === 360) {
+	// 			i = 0;
+	// 		}
+	// 	}
+	// }, 2000);
+	// setTimeout(function () {
+	// 	document.div.style.setProperty('--colorAdderBase', colorCount());
+	// }, 2000);
+
+	// 	Array.from(document.querySelectorAll('div')).forEach(function (item) {
+	// 		item.addEventListener('div', onNewValue);
+	// 	});
+
+	// 	function onNewValue(element) {
+	// 		if (element.tagName !== 'DIV') {
+	// 			element = element.currentTarget;
+	// 		}
+	// 	}
+	// }
+	// element.style.setProperty('--colorAdderBase', colorCount());
+
 	return (
 		<>
-			<div className='container'>
+			<div className='container' id='bgGradient'>
 				<div className='headerDiv'>
 					<h1 className='titleHeader'>Quick Chat</h1>
 				</div>
