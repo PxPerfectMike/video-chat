@@ -101,71 +101,78 @@ export default function Chat() {
 
 	return (
 		<>
-			<div className='headerDiv'>
-				<h1 className='titleHeader'>Quick Chat</h1>
-			</div>
-			<div className='myWindow'>
-				{stream && (
-					<video
-						className='myStream'
-						playsInline
-						muted
-						ref={myVideo}
-						autoPlay
-					/>
-				)}
-			</div>
-
-			<div className='userWindow'>
-				{callAccepted && !callEnded ? (
-					<video className='userStream' playsInline ref={userVideo} autoPlay />
-				) : null}
-			</div>
-
-			<div className='myId'>
-				<p className='myIdText'>Your ID: {me}</p>
-				<CopyToClipboard text={me}>
-					<button className='copyButton'>Copy ID</button>
-				</CopyToClipboard>
-
-				<input
-					aria-label='nameinput'
-					type={'text'}
-					className='nameInput'
-					placeholder='Enter your name'
-					value={idToCall}
-					onChange={(e) => setIdToCall(e.target.value)}
-				/>
-				<div className='call-button' style={{ margin: 'auto' }}>
-					{callAccepted && !callEnded ? (
-						<button variant='contained' color='primary' onClick={leaveCall}>
-							End Call
-						</button>
-					) : (
-						<button
-							color='secondary'
-							aria-label='call'
-							onClick={() => callUser(idToCall)}
-						>
-							call
-						</button>
-					)}
-					{idToCall}
+			<div className='container'>
+				<div className='headerDiv'>
+					<h1 className='titleHeader'>Quick Chat</h1>
 				</div>
-			</div>
-			<div>
-				{receivingCall && !callAccepted ? (
-					<div className='caller'>
-						<h1>{name} is calling...</h1>
-						<button variant='contained' color='primary' onClick={answerCall}>
-							Answer
-						</button>
+				<div className='myWindow'>
+					{stream && (
+						<video
+							className='myStream'
+							playsInline
+							muted
+							ref={myVideo}
+							autoPlay
+						/>
+					)}
+				</div>
+
+				<div className='userWindow'>
+					{callAccepted && !callEnded ? (
+						<video
+							className='userStream'
+							playsInline
+							ref={userVideo}
+							autoPlay
+						/>
+					) : null}
+				</div>
+
+				<div className='myId'>
+					<p className='myIdText'>Your ID: {me}</p>
+					<CopyToClipboard text={me}>
+						<button className='copyButton'>Copy ID</button>
+					</CopyToClipboard>
+
+					<input
+						aria-label='nameinput'
+						type={'text'}
+						className='nameInput'
+						placeholder='Enter your name'
+						value={idToCall}
+						onChange={(e) => setIdToCall(e.target.value)}
+					/>
+					<div className='call-button' style={{ margin: 'auto' }}>
+						{callAccepted && !callEnded ? (
+							<button variant='contained' color='primary' onClick={leaveCall}>
+								End Call
+							</button>
+						) : (
+							<button
+								color='secondary'
+								aria-label='call'
+								onClick={() => callUser(idToCall)}
+							>
+								call
+							</button>
+						)}
+						{idToCall}
 					</div>
-				) : null}
+				</div>
+				<div>
+					{receivingCall && !callAccepted ? (
+						<div className='caller'>
+							<h1>{name} is calling...</h1>
+							<button variant='contained' color='primary' onClick={answerCall}>
+								Answer
+							</button>
+						</div>
+					) : null}
+				</div>
+				<button className='logoutButton' onClick={logout}>
+					Logout
+				</button>
 			</div>
-			<button className='logoutButton' onClick={logout}>
-				Logout
-			</button>
 		</>
 	);
 }

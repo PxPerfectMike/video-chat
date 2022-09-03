@@ -1,32 +1,26 @@
-html {
-    box-sizing: border-box;
-    --QCpurple: #800080;
-    --QCgreen: #008000;
-    --QCgreenSecondary: #408000;
-    --QCblue: #000080;
-    --QCred: #800040;
-    --QCredSecondary: #9a004d;
+* {
+	z-index: 2;
 }
 
-*,
-*:before,
-*:after {
-    box-sizing: inherit;
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	background-color: #282c34;
+	color: white;
+	font-size: calc(10px + 2vmin);
+	text-align: center;
+	width: calc(600px + 2vmin);
+	height: calc(600px + 2vmin);
 }
 
-body {
-    width: 100vw;
-    height: 100vh;
-    margin: 0;
-}
-
-@media screen and (orientation: portrait) {
-    .videoWindow .myWindow {
-        position: absolute;
-        height: 100vh !important;
-        width: 100vh !important;
-        left: 50%;
-        top: 0;
-        transform: translateX(-50%);
-    }
+video {
+	z-index: 1;
+	position: fixed;
+	left: -50%;
+	bottom: 26%;
+	min-width: 100%;
+	min-height: 116vh;
 }
