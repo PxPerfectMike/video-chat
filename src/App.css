@@ -1,5 +1,6 @@
 * {
-	z-index: 2;
+	box-sizing: border-box;
+	margin: 0;
 }
 
 .container {
@@ -12,15 +13,25 @@
 	color: white;
 	font-size: calc(10px + 2vmin);
 	text-align: center;
-	width: calc(600px + 2vmin);
-	height: calc(600px + 2vmin);
+	width: 100vw;
+	overflow: hidden;
 }
 
-video {
+.myStream {
+	margin: 10px 50px;
+	border-radius: 50%;
+	border: 3px solid white;
+}
+
+.myStream video {
 	z-index: 1;
 	position: fixed;
-	left: -50%;
-	bottom: 26%;
-	min-width: 100%;
-	min-height: 116vh;
+	left: 20%;
+	bottom: 20%;
+	min-width: 100vw;
+	min-height: 100vh;
+	max-width: 90vw;
+	max-height: 90vh;
+	margin: auto;
+	border-radius: 50%;
 }
