@@ -3,13 +3,19 @@
 	margin: 0;
 }
 
+.titleHeader {
+	font-size: 4rem;
+	font-weight: 600;
+	font-family: 'Sacramento', cursive;
+}
+
 .container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	height: 100vh;
-	background-color: #282c34;
+	background-image: linear-gradient(57deg, #368b9e, #5a144d);
 	color: white;
 	font-size: calc(10px + 2vmin);
 	text-align: center;
@@ -17,21 +23,31 @@
 	overflow: hidden;
 }
 
-.myStream {
-	margin: 10px 50px;
+.myWindow {
 	border-radius: 50%;
-	border: 3px solid white;
+	padding: 6px;
+	width: auto;
+	height: auto;
 }
 
-.myStream video {
-	z-index: 1;
-	position: fixed;
-	left: 20%;
-	bottom: 20%;
-	min-width: 100vw;
-	min-height: 100vh;
-	max-width: 90vw;
-	max-height: 90vh;
-	margin: auto;
+.myStream {
 	border-radius: 50%;
+	border: 3px solid white;
+	padding: 6px;
+	outline: #ffffff solid 2px;
+	outline-offset: 0.2rem;
+	background-color: #3321b5;
+	z-index: 1;
+	border: 2px solid white;
+}
+
+.myIdText {
+	position: fixed;
+	bottom: 0;
+	font-size: 0.8rem;
+	font-weight: 100;
+	font-family: 'Roboto', sans-serif;
+	letter-spacing: 1px;
+	padding: 2px;
+	background-image: linear-gradient(90deg, #368b9e, #5a144d);
 }

@@ -6,6 +6,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import { auth, logout } from './firebase';
 import './App.css';
+import './loading.png';
 
 const socket = io.connect('http://localhost:5000');
 
@@ -24,6 +25,7 @@ export default function Chat() {
 	const myVideo = useRef();
 	const userVideo = useRef();
 	const connectionRef = useRef();
+	const [sessionId, setSessionId] = useState('');
 
 	useEffect(() => {
 		if (loading) return;
@@ -40,6 +42,7 @@ export default function Chat() {
 
 		socket.on('me', (id) => {
 			setMe(id);
+			setSessionId(id);
 		});
 
 		socket.on('callUser', (data) => {
@@ -109,10 +112,12 @@ export default function Chat() {
 					{stream && (
 						<video
 							className='myStream'
+							poster='loading.png'
 							playsInline
 							muted
 							ref={myVideo}
 							autoPlay
+							preload='none'
 						/>
 					)}
 				</div>
@@ -121,6 +126,7 @@ export default function Chat() {
 					{callAccepted && !callEnded ? (
 						<video
 							className='userStream'
+							poster='loading.png'
 							playsInline
 							ref={userVideo}
 							autoPlay
@@ -129,7 +135,6 @@ export default function Chat() {
 				</div>
 
 				<div className='myId'>
-					<p className='myIdText'>Your ID: {me}</p>
 					<CopyToClipboard text={me}>
 						<button className='copyButton'>Copy ID</button>
 					</CopyToClipboard>
@@ -172,6 +177,7 @@ export default function Chat() {
 				<button className='logoutButton' onClick={logout}>
 					Logout
 				</button>
+				<p className='myIdText'>Session ID: {sessionId}</p>
 			</div>
 		</>
 	);
