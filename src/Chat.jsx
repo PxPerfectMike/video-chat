@@ -1,13 +1,14 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useRef, useState } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Peer from 'simple-peer';
 import io from 'socket.io-client';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth, logout, db } from './firebase';
+import { query, collection, getDocs, where } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
-import { auth, logout } from './firebase';
 import './App.css';
 import './loading.png';
-// import { colorCount } from './helpers';
 
 const socket = io.connect('http://localhost:5000');
 
@@ -26,11 +27,24 @@ export default function Chat() {
 	const myVideo = useRef();
 	const userVideo = useRef();
 	const connectionRef = useRef();
+	// trim session id to 6 characters
 	const [sessionId, setSessionId] = useState('');
 
+	const fetchUserName = async () => {
+		try {
+			const q = query(collection(db, 'users'), where('uid', '==', user?.uid));
+			const doc = await getDocs(q);
+			const data = doc.docs[0].data();
+			setName(data.name);
+		} catch (err) {
+			console.error(err);
+			alert('An error occured while fetching user data');
+		}
+	};
 	useEffect(() => {
 		if (loading) return;
-		if (!user) navigate('/');
+		if (!user) return navigate('/');
+		fetchUserName();
 	}, [user, loading, navigate]);
 
 	useEffect(() => {
@@ -103,51 +117,9 @@ export default function Chat() {
 		connectionRef.current.destroy();
 	};
 
-	// class bgColorizer {
-	// 	constructor(element) {
-	// 		//can put while loop here if needed while bgcolorizer exists
-	// 		if (element) {
-	// 			document.querySelector(element);
-	// 		}
-	// 		const elements = [];
-	// 		for (let i = 0; i < 360; i++) {
-	// 			elements.push(document.querySelector(element));
-	// 		}
-	// 		for (element of elements) {
-	// 			element.setProperty('--colorAdderBase', colorCount());
-	// 		}
-	// 	}
-	// }
-
-	// new bgColorizer('.bgGradient');
-
-	// const bgColorizerooo = document.querySelector('.bgGradient');
-	// bgColorizer.style.setProperty('--colorAdderBase', colorCount());
-
-	// setInterval(function () {
-	// 	const colorArr = [];
-	// 	for (let i = 0; i < 360; i++) {
-	// 		colorArr.push(document.div.style.setProperty('--colorAdderBase', i));
-	// 		if (i === 360) {
-	// 			i = 0;
-	// 		}
-	// 	}
-	// }, 2000);
-	// setTimeout(function () {
-	// 	document.div.style.setProperty('--colorAdderBase', colorCount());
-	// }, 2000);
-
-	// 	Array.from(document.querySelectorAll('div')).forEach(function (item) {
-	// 		item.addEventListener('div', onNewValue);
-	// 	});
-
-	// 	function onNewValue(element) {
-	// 		if (element.tagName !== 'DIV') {
-	// 			element = element.currentTarget;
-	// 		}
-	// 	}
-	// }
-	// element.style.setProperty('--colorAdderBase', colorCount());
+	if (sessionId.length > 7) {
+		setSessionId(sessionId.slice(0, 7));
+	}
 
 	return (
 		<>
@@ -194,6 +166,8 @@ export default function Chat() {
 						value={idToCall}
 						onChange={(e) => setIdToCall(e.target.value)}
 					/>
+
+					<p className='nameText'>{name}</p>
 					<div className='call-button' style={{ margin: 'auto' }}>
 						{callAccepted && !callEnded ? (
 							<button variant='contained' color='primary' onClick={leaveCall}>

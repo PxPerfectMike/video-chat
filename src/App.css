@@ -1,366 +1,7 @@
-html {
-	--colorAdderBase: 0;
-	--sat: 0;
-}
-
-@keyframes bgGradient {
-	0% {
-		--colorAdderBase: 0;
-	}
-	1% {
-		--colorAdderBase: 3.6;
-	}
-	2% {
-		--colorAdderBase: 7.2;
-	}
-	3% {
-		--colorAdderBase: 10.8;
-	}
-	4% {
-		--colorAdderBase: 14.4;
-	}
-	5% {
-		--colorAdderBase: 18;
-	}
-	6% {
-		--colorAdderBase: 21.6;
-	}
-	7% {
-		--colorAdderBase: 25.2;
-	}
-	8% {
-		--colorAdderBase: 28.8;
-	}
-	9% {
-		--colorAdderBase: 32.4;
-	}
-	10% {
-		--colorAdderBase: 36;
-	}
-	11% {
-		--colorAdderBase: 39.6;
-	}
-	12% {
-		--colorAdderBase: 43.2;
-	}
-	13% {
-		--colorAdderBase: 46.8;
-	}
-	14% {
-		--colorAdderBase: 50.4;
-	}
-	15% {
-		--colorAdderBase: 54;
-	}
-	16% {
-		--colorAdderBase: 57.6;
-	}
-	17% {
-		--colorAdderBase: 61.2;
-	}
-	18% {
-		--colorAdderBase: 64.8;
-	}
-	19% {
-		--colorAdderBase: 68.4;
-	}
-	20% {
-		--colorAdderBase: 72;
-	}
-	21% {
-		--colorAdderBase: 75.6;
-	}
-	22% {
-		--colorAdderBase: 79.2;
-	}
-	23% {
-		--colorAdderBase: 82.8;
-	}
-	24% {
-		--colorAdderBase: 86.4;
-	}
-	25% {
-		--colorAdderBase: 90;
-	}
-	26% {
-		--colorAdderBase: 93.6;
-	}
-	27% {
-		--colorAdderBase: 97.2;
-	}
-	28% {
-		--colorAdderBase: 100.8;
-	}
-	29% {
-		--colorAdderBase: 104.4;
-	}
-	30% {
-		--colorAdderBase: 108;
-	}
-	31% {
-		--colorAdderBase: 111.6;
-	}
-	32% {
-		--colorAdderBase: 115.2;
-	}
-	33% {
-		--colorAdderBase: 118.8;
-	}
-	34% {
-		--colorAdderBase: 122.4;
-	}
-	35% {
-		--colorAdderBase: 126;
-	}
-	36% {
-		--colorAdderBase: 129.6;
-	}
-	37% {
-		--colorAdderBase: 133.2;
-	}
-	38% {
-		--colorAdderBase: 136.8;
-	}
-	39% {
-		--colorAdderBase: 140.4;
-	}
-	40% {
-		--colorAdderBase: 144;
-	}
-	41% {
-		--colorAdderBase: 147.6;
-	}
-	42% {
-		--colorAdderBase: 151.2;
-	}
-	43% {
-		--colorAdderBase: 154.8;
-	}
-	44% {
-		--colorAdderBase: 158.4;
-	}
-	45% {
-		--colorAdderBase: 162;
-	}
-	46% {
-		--colorAdderBase: 165.6;
-	}
-	47% {
-		--colorAdderBase: 169.2;
-	}
-	48% {
-		--colorAdderBase: 172.8;
-	}
-	49% {
-		--colorAdderBase: 176.4;
-	}
-	50% {
-		--colorAdderBase: 180;
-	}
-	51% {
-		--colorAdderBase: 183.6;
-	}
-	52% {
-		--colorAdderBase: 187.2;
-	}
-	53% {
-		--colorAdderBase: 190.8;
-	}
-	54% {
-		--colorAdderBase: 194.4;
-	}
-	55% {
-		--colorAdderBase: 198;
-	}
-	56% {
-		--colorAdderBase: 201.6;
-	}
-	57% {
-		--colorAdderBase: 205.2;
-	}
-	58% {
-		--colorAdderBase: 208.8;
-	}
-	59% {
-		--colorAdderBase: 212.4;
-	}
-	60% {
-		--colorAdderBase: 216;
-	}
-	61% {
-		--colorAdderBase: 219.6;
-	}
-	62% {
-		--colorAdderBase: 223.2;
-	}
-	63% {
-		--colorAdderBase: 226.8;
-	}
-	64% {
-		--colorAdderBase: 230.4;
-	}
-	65% {
-		--colorAdderBase: 234;
-	}
-	66% {
-		--colorAdderBase: 237.6;
-	}
-	67% {
-		--colorAdderBase: 241.2;
-	}
-	68% {
-		--colorAdderBase: 244.8;
-	}
-	69% {
-		--colorAdderBase: 248.4;
-	}
-	40% {
-		--colorAdderBase: 252;
-	}
-	71% {
-		--colorAdderBase: 255.6;
-	}
-	72% {
-		--colorAdderBase: 259.2;
-	}
-	73% {
-		--colorAdderBase: 262.8;
-	}
-	74% {
-		--colorAdderBase: 266.4;
-	}
-	75% {
-		--colorAdderBase: 270;
-	}
-	76% {
-		--colorAdderBase: 273.6;
-	}
-	77% {
-		--colorAdderBase: 277.2;
-	}
-	78% {
-		--colorAdderBase: 280.8;
-	}
-	79% {
-		--colorAdderBase: 284.4;
-	}
-	80% {
-		--colorAdderBase: 288;
-	}
-	81% {
-		--colorAdderBase: 291.6;
-	}
-	82% {
-		--colorAdderBase: 295.2;
-	}
-	83% {
-		--colorAdderBase: 298.8;
-	}
-	84% {
-		--colorAdderBase: 302.4;
-	}
-	85% {
-		--colorAdderBase: 306;
-	}
-	86% {
-		--colorAdderBase: 309.6;
-	}
-	87% {
-		--colorAdderBase: 313.2;
-	}
-	88% {
-		--colorAdderBase: 316.8;
-	}
-	89% {
-		--colorAdderBase: 320.4;
-	}
-	90% {
-		--colorAdderBase: 324;
-	}
-	91% {
-		--colorAdderBase: 327.6;
-	}
-	92% {
-		--colorAdderBase: 331.2;
-	}
-	93% {
-		--colorAdderBase: 334.8;
-	}
-	94% {
-		--colorAdderBase: 338.4;
-	}
-	95% {
-		--colorAdderBase: 342;
-	}
-	96% {
-		--colorAdderBase: 345.6;
-	}
-	97% {
-		--colorAdderBase: 349.2;
-	}
-	98% {
-		--colorAdderBase: 352.8;
-	}
-	99% {
-		--colorAdderBase: 356.4;
-	}
-	100% {
-		--colorAdderBase: 360;
-	}
-}
-
 * {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: antialiased;
 	box-sizing: border-box;
-	margin: 0;
-}
-
-.titleHeader {
-	font-size: 4rem;
-	font-weight: 600;
-	font-family: 'Sacramento', cursive;
-}
-
-.container {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	height: 100vh;
-	background: radial-gradient(
-		circle at top,
-		hsl(calc(var(--colorAdderBase) - 110), 15%, 50%) 0%,
-		hsl(calc(var(--colorAdderBase) - 110), 15%, 49.71%) 7.7%,
-		hsl(calc(var(--colorAdderBase) - 110), 15%, 48.89%) 14.8%,
-		hsl(calc(var(--colorAdderBase) - 110), 15%, 47.69%) 21%,
-		hsl(calc(var(--colorAdderBase) - 110), 15%, 46.22%) 26.5%,
-		hsl(calc(var(--colorAdderBase) - 110), 15%, 44.57%) 31.4%,
-		hsl(calc(var(--colorAdderBase) - 110), 15%, 42.76%) 35.9%,
-		hsl(calc(var(--colorAdderBase) + 160), 15%, 40.82%) 40.1%,
-		hsl(calc(var(--colorAdderBase) + 180), 15%, 38.7%) 44.2%,
-		hsl(calc(var(--colorAdderBase) + 200), 15%, 36.49%) 48.1%,
-		hsl(calc(var(--colorAdderBase) + 180), 15%, 36.55%) 52%,
-		hsl(calc(var(--colorAdderBase) + 160), 15%, 38.81%) 56%,
-		hsl(calc(var(--colorAdderBase) + 140), 15%, 40.92%) 60.1%,
-		hsl(calc(var(--colorAdderBase) + 120), 15%, 42.84%) 64.3%,
-		hsl(calc(var(--colorAdderBase) + 100), 15%, 44.64%) 68.8%,
-		hsl(calc(var(--colorAdderBase) + 80), 15%, 46.28%) 73.7%,
-		hsl(calc(var(--colorAdderBase) + 60), 15%, 47.74%) 79.2%,
-		hsl(calc(var(--colorAdderBase) + 40), 15%, 48.92%) 85.4%,
-		hsl(calc(var(--colorAdderBase) + 20), 15%, 49.72%) 92.5%,
-		hsl(calc(var(--colorAdderBase) + 10), 15%, 50%) 100%
-	);
-	color: white;
-	font-size: calc(10px + 2vmin);
-	text-align: center;
-	width: 100vw;
-	overflow: hidden;
-}
-
-#bgGradient {
-	-webkit-animation: bgGradient 180s infinite;
-	animation: bgGradient 180s infinite;
-	-webkit-animation-direction: alternate;
-	animation-direction: alternate-reverse;
 }
 
 .myWindow {
@@ -392,4 +33,526 @@ html {
 	background-image: linear-gradient(90deg, #102a30, #732164);
 	border-top-left-radius: 4px;
 	border-top-right-radius: 4px;
+}
+
+html {
+	--colorAdderBase: 172;
+	--sat: 0;
+}
+
+@keyframes bgGradient {
+	0% {
+		--colorAdderBase: 0;
+	}
+	0.1% {
+		--colorAdderBase: 0.1;
+	}
+	0.2% {
+		--colorAdderBase: 0.2;
+	}
+	0.3% {
+		--colorAdderBase: 0.3;
+	}
+	0.4% {
+		--colorAdderBase: 0.4;
+	}
+	0.5% {
+		--colorAdderBase: 0.5;
+	}
+	0.6% {
+		--colorAdderBase: 0.6;
+	}
+	0.7% {
+		--colorAdderBase: 0.7;
+	}
+	0.8% {
+		--colorAdderBase: 0.8;
+	}
+	0.9% {
+		--colorAdderBase: 0.9;
+	}
+	1% {
+		--colorAdderBase: 1;
+	}
+	1.1% {
+		--colorAdderBase: 1.1;
+	}
+	1.2% {
+		--colorAdderBase: 1.2;
+	}
+	1.3% {
+		--colorAdderBase: 1.3;
+	}
+	1.4% {
+		--colorAdderBase: 1.4;
+	}
+	1.5% {
+		--colorAdderBase: 1.5;
+	}
+	1.6% {
+		--colorAdderBase: 1.6;
+	}
+	1.7% {
+		--colorAdderBase: 1.7;
+	}
+	1.8% {
+		--colorAdderBase: 1.8;
+	}
+	1.9% {
+		--colorAdderBase: 1.9;
+	}
+	2% {
+		--colorAdderBase: 2;
+	}
+	2% {
+		--colorAdderBase: 2;
+	}
+	3% {
+		--colorAdderBase: 3;
+	}
+	4% {
+		--colorAdderBase: 4;
+	}
+	5% {
+		--colorAdderBase: 5;
+	}
+	6% {
+		--colorAdderBase: 6;
+	}
+	7% {
+		--colorAdderBase: 7;
+	}
+	8% {
+		--colorAdderBase: 8;
+	}
+	9% {
+		--colorAdderBase: 9;
+	}
+	10% {
+		--colorAdderBase: 10;
+	}
+	11% {
+		--colorAdderBase: 11;
+	}
+	12% {
+		--colorAdderBase: 12;
+	}
+	13% {
+		--colorAdderBase: 13;
+	}
+	14% {
+		--colorAdderBase: 14;
+	}
+	15% {
+		--colorAdderBase: 15;
+	}
+	16% {
+		--colorAdderBase: 16;
+	}
+	17% {
+		--colorAdderBase: 17;
+	}
+	18% {
+		--colorAdderBase: 18;
+	}
+	19% {
+		--colorAdderBase: 19;
+	}
+	20% {
+		--colorAdderBase: 20;
+	}
+	21% {
+		--colorAdderBase: 21;
+	}
+	22% {
+		--colorAdderBase: 22;
+	}
+	23% {
+		--colorAdderBase: 23;
+	}
+	24% {
+		--colorAdderBase: 24;
+	}
+	25% {
+		--colorAdderBase: 25;
+	}
+	26% {
+		--colorAdderBase: 26;
+	}
+	27% {
+		--colorAdderBase: 27;
+	}
+	28% {
+		--colorAdderBase: 28;
+	}
+	29% {
+		--colorAdderBase: 29;
+	}
+	30% {
+		--colorAdderBase: 30;
+	}
+	31% {
+		--colorAdderBase: 31;
+	}
+	32% {
+		--colorAdderBase: 32;
+	}
+	33% {
+		--colorAdderBase: 33;
+	}
+	34% {
+		--colorAdderBase: 34;
+	}
+	35% {
+		--colorAdderBase: 35;
+	}
+	36% {
+		--colorAdderBase: 36;
+	}
+	37% {
+		--colorAdderBase: 37;
+	}
+	38% {
+		--colorAdderBase: 38;
+	}
+	39% {
+		--colorAdderBase: 39;
+	}
+	40% {
+		--colorAdderBase: 40;
+	}
+	41% {
+		--colorAdderBase: 41;
+	}
+	42% {
+		--colorAdderBase: 42;
+	}
+	43% {
+		--colorAdderBase: 43;
+	}
+	44% {
+		--colorAdderBase: 44;
+	}
+	45% {
+		--colorAdderBase: 45;
+	}
+	46% {
+		--colorAdderBase: 46;
+	}
+	47% {
+		--colorAdderBase: 47;
+	}
+	48% {
+		--colorAdderBase: 48;
+	}
+	49% {
+		--colorAdderBase: 49;
+	}
+	50% {
+		--colorAdderBase: 50;
+	}
+	51% {
+		--colorAdderBase: 51;
+	}
+	52% {
+		--colorAdderBase: 52;
+	}
+	53% {
+		--colorAdderBase: 53;
+	}
+	54% {
+		--colorAdderBase: 54;
+	}
+	55% {
+		--colorAdderBase: 55;
+	}
+	56% {
+		--colorAdderBase: 56;
+	}
+	57% {
+		--colorAdderBase: 57;
+	}
+	58% {
+		--colorAdderBase: 58;
+	}
+	59% {
+		--colorAdderBase: 59;
+	}
+	60% {
+		--colorAdderBase: 60;
+	}
+	61% {
+		--colorAdderBase: 61;
+	}
+	62% {
+		--colorAdderBase: 62;
+	}
+	63% {
+		--colorAdderBase: 63;
+	}
+	64% {
+		--colorAdderBase: 64;
+	}
+	65% {
+		--colorAdderBase: 65;
+	}
+	66% {
+		--colorAdderBase: 66;
+	}
+	67% {
+		--colorAdderBase: 67;
+	}
+	68% {
+		--colorAdderBase: 68;
+	}
+	69% {
+		--colorAdderBase: 69;
+	}
+	70% {
+		--colorAdderBase: 70;
+	}
+	71% {
+		--colorAdderBase: 71;
+	}
+	72% {
+		--colorAdderBase: 72;
+	}
+	73% {
+		--colorAdderBase: 73;
+	}
+	74% {
+		--colorAdderBase: 74;
+	}
+	75% {
+		--colorAdderBase: 75;
+	}
+	76% {
+		--colorAdderBase: 76;
+	}
+	77% {
+		--colorAdderBase: 77;
+	}
+	78% {
+		--colorAdderBase: 78;
+	}
+	79% {
+		--colorAdderBase: 79;
+	}
+	80% {
+		--colorAdderBase: 80;
+	}
+	81% {
+		--colorAdderBase: 81;
+	}
+	82% {
+		--colorAdderBase: 82;
+	}
+	83% {
+		--colorAdderBase: 83;
+	}
+	84% {
+		--colorAdderBase: 84;
+	}
+	85% {
+		--colorAdderBase: 85;
+	}
+	86% {
+		--colorAdderBase: 86;
+	}
+	87% {
+		--colorAdderBase: 87;
+	}
+	88% {
+		--colorAdderBase: 88;
+	}
+	89% {
+		--colorAdderBase: 89;
+	}
+	90% {
+		--colorAdderBase: 90;
+	}
+	91% {
+		--colorAdderBase: 91;
+	}
+	92% {
+		--colorAdderBase: 92;
+	}
+	93% {
+		--colorAdderBase: 93;
+	}
+	94% {
+		--colorAdderBase: 94;
+	}
+	95% {
+		--colorAdderBase: 95;
+	}
+	96% {
+		--colorAdderBase: 96;
+	}
+	97% {
+		--colorAdderBase: 97;
+	}
+	98% {
+		--colorAdderBase: 98;
+	}
+	99% {
+		--colorAdderBase: 99;
+	}
+	100% {
+		--colorAdderBase: 100;
+	}
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+}
+
+.titleHeader {
+	font-size: 4rem;
+	font-weight: 600;
+	font-family: 'Sacramento', cursive;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	background: radial-gradient(
+		circle at center,
+		hsl(calc(var(--colorAdderBase) + 172), 30%, 50%) 0%,
+		hsl(calc(var(--colorAdderBase) + 173), 30%, 49.71%) 1%,
+		hsl(calc(var(--colorAdderBase) + 174), 30%, 49.42%) 2%,
+		hsl(calc(var(--colorAdderBase) + 175), 30%, 49.13%) 3%,
+		hsl(calc(var(--colorAdderBase) + 176), 30%, 48.84%) 4%,
+		hsl(calc(var(--colorAdderBase) + 177), 30%, 48.55%) 5%,
+		hsl(calc(var(--colorAdderBase) + 178), 30%, 48.26%) 6%,
+		hsl(calc(var(--colorAdderBase) + 179), 30%, 47.97%) 7%,
+		hsl(calc(var(--colorAdderBase) + 180), 30%, 47.68%) 8%,
+		hsl(calc(var(--colorAdderBase) + 181), 30%, 47.39%) 9%,
+		hsl(calc(var(--colorAdderBase) + 182), 30%, 47.1%) 10%,
+		hsl(calc(var(--colorAdderBase) + 183), 30%, 46.81%) 11%,
+		hsl(calc(var(--colorAdderBase) + 184), 30%, 46.52%) 12%,
+		hsl(calc(var(--colorAdderBase) + 185), 30%, 46.23%) 13%,
+		hsl(calc(var(--colorAdderBase) + 186), 30%, 45.94%) 14%,
+		hsl(calc(var(--colorAdderBase) + 187), 30%, 45.65%) 15%,
+		hsl(calc(var(--colorAdderBase) + 188), 30%, 45.36%) 16%,
+		hsl(calc(var(--colorAdderBase) + 189), 30%, 45.07%) 17%,
+		hsl(calc(var(--colorAdderBase) + 190), 30%, 44.78%) 18%,
+		hsl(calc(var(--colorAdderBase) + 191), 30%, 44.49%) 19%,
+		hsl(calc(var(--colorAdderBase) + 192), 30%, 44.2%) 20%,
+		hsl(calc(var(--colorAdderBase) + 193), 30%, 43.91%) 21%,
+		hsl(calc(var(--colorAdderBase) + 194), 30%, 43.62%) 22%,
+		hsl(calc(var(--colorAdderBase) + 195), 30%, 43.33%) 23%,
+		hsl(calc(var(--colorAdderBase) + 196), 30%, 43.04%) 24%,
+		hsl(calc(var(--colorAdderBase) + 197), 30%, 42.75%) 25%,
+		hsl(calc(var(--colorAdderBase) + 198), 30%, 42.46%) 26%,
+		hsl(calc(var(--colorAdderBase) + 199), 30%, 42.17%) 27%,
+		hsl(calc(var(--colorAdderBase) + 200), 30%, 41.88%) 28%,
+		hsl(calc(var(--colorAdderBase) + 201), 30%, 41.59%) 29%,
+		hsl(calc(var(--colorAdderBase) + 202), 30%, 41.3%) 30%,
+		hsl(calc(var(--colorAdderBase) + 203), 30%, 41.01%) 31%,
+		hsl(calc(var(--colorAdderBase) + 204), 30%, 40.72%) 32%,
+		hsl(calc(var(--colorAdderBase) + 205), 30%, 40.43%) 33%,
+		hsl(calc(var(--colorAdderBase) + 206), 30%, 40.14%) 34%,
+		hsl(calc(var(--colorAdderBase) + 207), 30%, 39.85%) 35%,
+		hsl(calc(var(--colorAdderBase) + 208), 30%, 39.56%) 36%,
+		hsl(calc(var(--colorAdderBase) + 209), 30%, 39.27%) 37%,
+		hsl(calc(var(--colorAdderBase) + 210), 30%, 38.98%) 38%,
+		hsl(calc(var(--colorAdderBase) + 211), 30%, 38.69%) 39%,
+		hsl(calc(var(--colorAdderBase) + 212), 30%, 38.4%) 40%,
+		hsl(calc(var(--colorAdderBase) + 213), 30%, 38.11%) 41%,
+		hsl(calc(var(--colorAdderBase) + 214), 30%, 37.82%) 42%,
+		hsl(calc(var(--colorAdderBase) + 215), 30%, 37.53%) 43%,
+		hsl(calc(var(--colorAdderBase) + 216), 30%, 37.24%) 44%,
+		hsl(calc(var(--colorAdderBase) + 217), 30%, 36.95%) 45%,
+		hsl(calc(var(--colorAdderBase) + 218), 30%, 36.66%) 46%,
+		hsl(calc(var(--colorAdderBase) + 219), 30%, 36.37%) 47%,
+		hsl(calc(var(--colorAdderBase) + 220), 30%, 36.08%) 48%,
+		hsl(calc(var(--colorAdderBase) + 221), 30%, 35.79%) 49%,
+		hsl(calc(var(--colorAdderBase) + 222), 30%, 35.5%) 50%,
+		hsl(calc(var(--colorAdderBase) + 221), 30%, 35.79%) 51%,
+		hsl(calc(var(--colorAdderBase) + 220), 30%, 36.08%) 52%,
+		hsl(calc(var(--colorAdderBase) + 219), 30%, 36.37%) 53%,
+		hsl(calc(var(--colorAdderBase) + 218), 30%, 36.66%) 54%,
+		hsl(calc(var(--colorAdderBase) + 217), 30%, 36.95%) 55%,
+		hsl(calc(var(--colorAdderBase) + 216), 30%, 37.24%) 56%,
+		hsl(calc(var(--colorAdderBase) + 215), 30%, 37.53%) 57%,
+		hsl(calc(var(--colorAdderBase) + 214), 30%, 37.82%) 58%,
+		hsl(calc(var(--colorAdderBase) + 213), 30%, 38.11%) 59%,
+		hsl(calc(var(--colorAdderBase) + 212), 30%, 38.4%) 60%,
+		hsl(calc(var(--colorAdderBase) + 211), 30%, 38.69%) 61%,
+		hsl(calc(var(--colorAdderBase) + 210), 30%, 38.98%) 62%,
+		hsl(calc(var(--colorAdderBase) + 209), 30%, 39.27%) 63%,
+		hsl(calc(var(--colorAdderBase) + 208), 30%, 39.56%) 64%,
+		hsl(calc(var(--colorAdderBase) + 207), 30%, 39.85%) 65%,
+		hsl(calc(var(--colorAdderBase) + 206), 30%, 40.14%) 66%,
+		hsl(calc(var(--colorAdderBase) + 205), 30%, 40.43%) 67%,
+		hsl(calc(var(--colorAdderBase) + 204), 30%, 40.72%) 68%,
+		hsl(calc(var(--colorAdderBase) + 203), 30%, 41.01%) 69%,
+		hsl(calc(var(--colorAdderBase) + 202), 30%, 41.3%) 70%,
+		hsl(calc(var(--colorAdderBase) + 201), 30%, 41.59%) 71%,
+		hsl(calc(var(--colorAdderBase) + 200), 30%, 41.88%) 72%,
+		hsl(calc(var(--colorAdderBase) + 199), 30%, 42.17%) 73%,
+		hsl(calc(var(--colorAdderBase) + 198), 30%, 42.46%) 74%,
+		hsl(calc(var(--colorAdderBase) + 197), 30%, 42.75%) 75%,
+		hsl(calc(var(--colorAdderBase) + 196), 30%, 43.04%) 76%,
+		hsl(calc(var(--colorAdderBase) + 195), 30%, 43.33%) 77%,
+		hsl(calc(var(--colorAdderBase) + 194), 30%, 43.62%) 78%,
+		hsl(calc(var(--colorAdderBase) + 193), 30%, 43.91%) 79%,
+		hsl(calc(var(--colorAdderBase) + 192), 30%, 44.2%) 80%,
+		hsl(calc(var(--colorAdderBase) + 191), 30%, 44.49%) 81%,
+		hsl(calc(var(--colorAdderBase) + 190), 30%, 44.78%) 82%,
+		hsl(calc(var(--colorAdderBase) + 189), 30%, 45.07%) 83%,
+		hsl(calc(var(--colorAdderBase) + 188), 30%, 45.36%) 84%,
+		hsl(calc(var(--colorAdderBase) + 187), 30%, 45.65%) 85%,
+		hsl(calc(var(--colorAdderBase) + 186), 30%, 45.94%) 86%,
+		hsl(calc(var(--colorAdderBase) + 185), 30%, 46.23%) 87%,
+		hsl(calc(var(--colorAdderBase) + 184), 30%, 46.52%) 88%,
+		hsl(calc(var(--colorAdderBase) + 183), 30%, 46.81%) 89%,
+		hsl(calc(var(--colorAdderBase) + 182), 30%, 47.1%) 90%,
+		hsl(calc(var(--colorAdderBase) + 181), 30%, 47.39%) 91%,
+		hsl(calc(var(--colorAdderBase) + 180), 30%, 47.68%) 92%,
+		hsl(calc(var(--colorAdderBase) + 179), 30%, 47.97%) 93%,
+		hsl(calc(var(--colorAdderBase) + 178), 30%, 48.26%) 94%,
+		hsl(calc(var(--colorAdderBase) + 177), 30%, 48.55%) 95%,
+		hsl(calc(var(--colorAdderBase) + 176), 30%, 48.84%) 96%,
+		hsl(calc(var(--colorAdderBase) + 175), 30%, 49.13%) 97%,
+		hsl(calc(var(--colorAdderBase) + 174), 30%, 49.42%) 98%,
+		hsl(calc(var(--colorAdderBase) + 173), 30%, 49.71%) 99%,
+		hsl(calc(var(--colorAdderBase) + 172), 30%, 50%) 100%
+			/* hsl(calc(var(--colorAdderBase) + 160), 30%, 49.71%) 7.7%,
+		hsl(calc(var(--colorAdderBase) + 170), 30%, 48.89%) 14.8%,
+		hsl(calc(var(--colorAdderBase) + 180), 30%, 47.69%) 21%,
+		hsl(calc(var(--colorAdderBase) + 190), 30%, 46.22%) 26.5%,
+		hsl(calc(var(--colorAdderBase) + 200), 30%, 44.57%) 31.4%,
+		hsl(calc(var(--colorAdderBase) + 200), 30%, 42.76%) 35.9%,
+		hsl(calc(var(--colorAdderBase) + 200), 30%, 40.82%) 40.1%,
+		hsl(calc(var(--colorAdderBase) + 200), 30%, 38.7%) 44.2%,
+		hsl(calc(var(--colorAdderBase) + 200), 30%, 36.49%) 48.1%,
+		hsl(calc(var(--colorAdderBase) + 200), 30%, 36.55%) 52%,
+		hsl(calc(var(--colorAdderBase) + 200), 30%, 38.81%) 56%,
+		hsl(calc(var(--colorAdderBase) + 200), 30%, 40.92%) 60.1%,
+		hsl(calc(var(--colorAdderBase) + 200), 30%, 42.84%) 64.3%,
+		hsl(calc(var(--colorAdderBase) + 200), 30%, 44.64%) 68.8%,
+		hsl(calc(var(--colorAdderBase) + 190), 30%, 46.28%) 73.7%,
+		hsl(calc(var(--colorAdderBase) + 180), 30%, 47.74%) 79.2%,
+		hsl(calc(var(--colorAdderBase) + 170), 30%, 48.92%) 85.4%,
+		hsl(calc(var(--colorAdderBase) + 160), 30%, 49.72%) 92.5%,
+		hsl(calc(var(--colorAdderBase) + 150), 30%, 50%) 100% */
+	);
+	color: white;
+	font-size: calc(10px + 2vmin);
+	text-align: center;
+	width: 100vw;
+	overflow: hidden;
+}
+
+#bgGradient {
+	-webkit-animation: bgGradient 180s alternate infinite;
+	animation: bgGradient 16s alternate infinite;
+	-webkit-animation-direction: alternate;
+	animation-direction: alternate;
 }
