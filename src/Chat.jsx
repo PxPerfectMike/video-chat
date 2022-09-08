@@ -155,7 +155,6 @@ export default function Chat() {
 							ref={myVideo}
 							autoPlay
 							preload='none'
-							style={{ boxShadow: 'inset 22px 22px 140px #000000' }}
 						/>
 					)}
 				</div>
