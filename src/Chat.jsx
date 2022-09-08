@@ -182,20 +182,21 @@ export default function Chat() {
 						/>
 					) : null}
 				</motion.div>
-
 				<div className='myId'>
-					<CopyToClipboard text={me}>
-						<button className='copyButton'>Copy ID</button>
-					</CopyToClipboard>
+					<div className='ShareEnterId'>
+						<CopyToClipboard text={me}>
+							<button className='copyButton'>Copy ID</button>
+						</CopyToClipboard>
 
-					<input
-						aria-label='nameinput'
-						type={'text'}
-						className='nameInput'
-						placeholder='Enter your name'
-						value={idToCall}
-						onChange={(e) => setIdToCall(e.target.value)}
-					/>
+						<input
+							aria-label='nameinput'
+							type={'text'}
+							className='nameInput'
+							placeholder='Enter Call ID'
+							value={idToCall}
+							onChange={(e) => setIdToCall(e.target.value)}
+						/>
+					</div>
 
 					<p className='nameText'>{name}</p>
 					<div className='call-button' style={{ margin: 'auto' }}>
