@@ -2,22 +2,35 @@
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: antialiased;
 	box-sizing: border-box;
+	overflow: hidden;
 }
 
 .myWindow {
-	border-radius: 50%;
-	padding: 6px;
-	width: auto;
+	width: 96%;
 	height: auto;
 }
 
+.userWindow {
+	position: absolute;
+	padding: 6px;
+}
+
 .myStream {
-	border-radius: 50%;
+	width: 100%;
+	border-radius: 5px;
+	padding: 6px;
+	background-color: #e4dfdf;
+	z-index: 1;
+}
+
+.userStream {
+	width: 60%;
+	border-radius: 999px;
 	border: 3px solid white;
 	padding: 6px;
 	outline: #ffffff solid 2px;
 	outline-offset: 0.2rem;
-	background-color: #3321b5;
+	background-color: #b52121;
 	z-index: 1;
 	border: 2px solid white;
 }
@@ -38,6 +51,16 @@
 html {
 	--colorAdderBase: 172;
 	--sat: 0;
+}
+
+@media screen and (min-width: 600px) {
+	.myWindow {
+		width: auto;
+	}
+
+	.myStream {
+		width: auto;
+	}
 }
 
 @keyframes bgGradient {
@@ -551,7 +574,7 @@ html {
 }
 
 #bgGradient {
-	-webkit-animation: bgGradient 180s alternate infinite;
+	-webkit-animation: bgGradient 16s alternate infinite;
 	animation: bgGradient 16s alternate infinite;
 	-webkit-animation-direction: alternate;
 	animation-direction: alternate;

@@ -9,6 +9,7 @@ import { query, collection, getDocs, where } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 import './App.css';
 import './loading.png';
+import { motion, useDragControls } from 'framer-motion';
 
 const socket = io.connect('http://localhost:5000');
 
@@ -121,6 +122,23 @@ export default function Chat() {
 		setSessionId(sessionId.slice(0, 7));
 	}
 
+	const controls = useDragControls();
+
+	function startDrag(event) {
+		controls.start(event, { snapToCursor: false });
+	}
+
+	function xDragBounds() {
+		const halfheight = window.innerHeight * 0.5;
+		const halfWidth = window.innerWidth * 0.5;
+		return {
+			right: halfWidth,
+			left: -halfWidth,
+			top: -halfheight,
+			bottom: halfheight,
+		};
+	}
+
 	return (
 		<>
 			<div className='container' id='bgGradient'>
@@ -137,11 +155,24 @@ export default function Chat() {
 							ref={myVideo}
 							autoPlay
 							preload='none'
+							style={{ boxShadow: 'inset 22px 22px 140px #000000' }}
 						/>
 					)}
 				</div>
 
-				<div className='userWindow'>
+				<motion.div
+					className='userWindow'
+					onPointerDown={startDrag}
+					drag
+					dragControls={controls}
+					dragElastic={0.5}
+					dragConstraints={{
+						left: xDragBounds().left,
+						right: xDragBounds().right,
+						top: xDragBounds().top,
+						bottom: xDragBounds().bottom,
+					}}
+				>
 					{callAccepted && !callEnded ? (
 						<video
 							className='userStream'
@@ -151,7 +182,7 @@ export default function Chat() {
 							autoPlay
 						/>
 					) : null}
-				</div>
+				</motion.div>
 
 				<div className='myId'>
 					<CopyToClipboard text={me}>
