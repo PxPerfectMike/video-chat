@@ -185,7 +185,7 @@ export default function Chat() {
 				<div className='myId'>
 					<div className='ShareEnterId'>
 						<CopyToClipboard text={me}>
-							<button className='copyButton'>Copy ID</button>
+							<button className='copyButton'>Share Call ID</button>
 						</CopyToClipboard>
 
 						<input

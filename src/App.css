@@ -13,6 +13,19 @@ html {
 .ShareEnterId {
 	display: flex;
 	flex-direction: column;
+	margin: 12px auto;
+}
+
+.ShareEnterId button {
+	background-color: #000000;
+	color: #ffffff;
+	border: none;
+	border-radius: 999px;
+	padding: 4px;
+}
+
+.ShareEnterId input {
+	margin: 6px auto;
 }
 
 .myWindow {
