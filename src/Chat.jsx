@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import './App.css';
 import './loading.png';
 import { motion, useDragControls } from 'framer-motion';
+import phoneIcon from './phoneIcon.svg';
 
 const socket = io.connect('http://localhost:5000');
 
@@ -28,7 +29,7 @@ export default function Chat() {
 	const myVideo = useRef();
 	const userVideo = useRef();
 	const connectionRef = useRef();
-	// trim session id to 6 characters
+	// trim session id to 7 characters
 	const [sessionId, setSessionId] = useState('');
 
 	const fetchUserName = async () => {
@@ -56,11 +57,6 @@ export default function Chat() {
 				myVideo.current.srcObject = stream;
 			});
 
-		socket.on('me', (id) => {
-			setMe(id);
-			setSessionId(id);
-		});
-
 		socket.on('callUser', (data) => {
 			setReceivingCall(true);
 			setCaller(data.from);
@@ -68,6 +64,12 @@ export default function Chat() {
 			setCallerSignal(data.signal);
 		});
 	}, []);
+
+	socket.on('me', (id) => {
+		setMe(id);
+		setSessionId(id);
+		console.log(me, id);
+	});
 
 	const callUser = (id) => {
 		const peer = new Peer({
@@ -116,11 +118,18 @@ export default function Chat() {
 	const leaveCall = () => {
 		setCallEnded(true);
 		connectionRef.current.destroy();
+		window.location.reload();
 	};
 
 	if (sessionId.length > 7) {
 		setSessionId(sessionId.slice(0, 7));
 	}
+
+	// function appendSessionIdToUrlOnPageLoad() {
+	// 	const url = window.location.href;
+	// 	const newUrl = url.replace(/QuickChat/g, 'abc123');
+	// 	window.history.replaceState({}, document.title, newUrl);
+	// }
 
 	const controls = useDragControls();
 
@@ -128,7 +137,7 @@ export default function Chat() {
 		controls.start(event, { snapToCursor: false });
 	}
 
-	function xDragBounds() {
+	function DragBounds() {
 		const halfheight = window.innerHeight * 0.5;
 		const halfWidth = window.innerWidth * 0.5;
 		return {
@@ -139,12 +148,31 @@ export default function Chat() {
 		};
 	}
 
+	let sessionIdexists = false;
+
+	function obtainCallId() {
+		if (sessionId === '') {
+			sessionIdexists = false;
+			return 'Obtain Call ID';
+		} else {
+			sessionIdexists = true;
+			return 'Share Call ID';
+		}
+	}
+
+	function reloadIfNoSessionId() {
+		if (sessionIdexists === false) {
+			window.location.reload();
+		}
+	}
+
 	return (
 		<>
 			<div className='container' id='bgGradient'>
 				<div className='headerDiv'>
 					<h1 className='titleHeader'>Quick Chat</h1>
 				</div>
+				<p className='nameText'>{name}</p>
 				<div className='myWindow'>
 					{stream && (
 						<video
@@ -166,10 +194,10 @@ export default function Chat() {
 					dragControls={controls}
 					dragElastic={0.5}
 					dragConstraints={{
-						left: xDragBounds().left,
-						right: xDragBounds().right,
-						top: xDragBounds().top,
-						bottom: xDragBounds().bottom,
+						left: DragBounds().left,
+						right: DragBounds().right,
+						top: DragBounds().top,
+						bottom: DragBounds().bottom,
 					}}
 				>
 					{callAccepted && !callEnded ? (
@@ -185,44 +213,44 @@ export default function Chat() {
 				<div className='myId'>
 					<div className='ShareEnterId'>
 						<CopyToClipboard text={me}>
-							<button className='copyButton'>Share Call ID</button>
+							<button onClick={reloadIfNoSessionId} className='copyButton'>
+								{obtainCallId()}
+							</button>
 						</CopyToClipboard>
 
 						<input
+							maxLength={20}
 							aria-label='nameinput'
 							type={'text'}
 							className='nameInput'
 							placeholder='Enter Call ID'
 							value={idToCall}
 							onChange={(e) => setIdToCall(e.target.value)}
+							setInheritedSessionId={idToCall.slice(0, 7)}
 						/>
 					</div>
 
-					<p className='nameText'>{name}</p>
-					<div className='call-button' style={{ margin: 'auto' }}>
+					<div className='call-button-container'>
 						{callAccepted && !callEnded ? (
-							<button variant='contained' color='primary' onClick={leaveCall}>
+							<button className='end-call-button' onClick={leaveCall}>
 								End Call
 							</button>
 						) : (
 							<button
-								color='secondary'
+								className='call-button'
 								aria-label='call'
 								onClick={() => callUser(idToCall)}
 							>
-								call
+								<img src={phoneIcon} alt='phone' />
 							</button>
 						)}
-						{idToCall}
 					</div>
 				</div>
 				<div>
 					{receivingCall && !callAccepted ? (
 						<div className='caller'>
 							<h1>{name} is calling...</h1>
-							<button variant='contained' color='primary' onClick={answerCall}>
-								Answer
-							</button>
+							<button onClick={answerCall}>Answer</button>
 						</div>
 					) : null}
 				</div>

@@ -14,6 +14,7 @@ html {
 	display: flex;
 	flex-direction: column;
 	margin: 12px auto;
+	align-items: center;
 }
 
 .ShareEnterId button {
@@ -21,11 +22,11 @@ html {
 	color: #ffffff;
 	border: none;
 	border-radius: 999px;
-	padding: 4px;
+	padding: 10px;
 }
 
 .ShareEnterId input {
-	margin: 6px auto;
+	margin: 10px 10px;
 }
 
 .myWindow {
@@ -86,7 +87,7 @@ html {
 	}
 
 	.myStream {
-		width: auto;
+		width: 90%;
 	}
 }
 
@@ -458,10 +459,25 @@ html {
 	margin: 0;
 }
 
+.headerDiv {
+	width: 100vw;
+	position: relative;
+	top: 10px;
+	left: 0;
+}
+
 .titleHeader {
+	width: 100%;
+	margin: auto;
 	font-size: 4rem;
 	font-weight: 600;
 	font-family: 'Sacramento', cursive;
+}
+
+@media screen and (max-width: 500px) {
+	.titleHeader {
+		font-size: 4em;
+	}
 }
 
 .container {
@@ -573,25 +589,6 @@ html {
 		hsl(calc(var(--colorAdderBase) + 174), 30%, 49.42%) 98%,
 		hsl(calc(var(--colorAdderBase) + 173), 30%, 49.71%) 99%,
 		hsl(calc(var(--colorAdderBase) + 172), 30%, 50%) 100%
-			/* hsl(calc(var(--colorAdderBase) + 160), 30%, 49.71%) 7.7%,
-		hsl(calc(var(--colorAdderBase) + 170), 30%, 48.89%) 14.8%,
-		hsl(calc(var(--colorAdderBase) + 180), 30%, 47.69%) 21%,
-		hsl(calc(var(--colorAdderBase) + 190), 30%, 46.22%) 26.5%,
-		hsl(calc(var(--colorAdderBase) + 200), 30%, 44.57%) 31.4%,
-		hsl(calc(var(--colorAdderBase) + 200), 30%, 42.76%) 35.9%,
-		hsl(calc(var(--colorAdderBase) + 200), 30%, 40.82%) 40.1%,
-		hsl(calc(var(--colorAdderBase) + 200), 30%, 38.7%) 44.2%,
-		hsl(calc(var(--colorAdderBase) + 200), 30%, 36.49%) 48.1%,
-		hsl(calc(var(--colorAdderBase) + 200), 30%, 36.55%) 52%,
-		hsl(calc(var(--colorAdderBase) + 200), 30%, 38.81%) 56%,
-		hsl(calc(var(--colorAdderBase) + 200), 30%, 40.92%) 60.1%,
-		hsl(calc(var(--colorAdderBase) + 200), 30%, 42.84%) 64.3%,
-		hsl(calc(var(--colorAdderBase) + 200), 30%, 44.64%) 68.8%,
-		hsl(calc(var(--colorAdderBase) + 190), 30%, 46.28%) 73.7%,
-		hsl(calc(var(--colorAdderBase) + 180), 30%, 47.74%) 79.2%,
-		hsl(calc(var(--colorAdderBase) + 170), 30%, 48.92%) 85.4%,
-		hsl(calc(var(--colorAdderBase) + 160), 30%, 49.72%) 92.5%,
-		hsl(calc(var(--colorAdderBase) + 150), 30%, 50%) 100% */
 	);
 	color: white;
 	font-size: calc(10px + 2vmin);
@@ -605,4 +602,67 @@ html {
 	animation: bgGradient 16s alternate infinite;
 	-webkit-animation-direction: alternate;
 	animation-direction: alternate;
+}
+
+.nameInput {
+	width: 100%;
+	font-size: 1rem;
+	text-align: center;
+	border: 2px solid #1b1b1b;
+	background: transparent;
+	color: #fefefe;
+	border-radius: 7px;
+	padding: 0.2rem;
+	max-width: 210px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 600;
+}
+
+.nameInput::placeholder {
+	color: #fefefecd;
+}
+
+.nameInput:focus {
+	outline: 1px solid #ede726;
+	border: 2px solid #ede726;
+}
+
+.nameText {
+	font-size: 2rem;
+	font-weight: 600;
+	margin: 1rem;
+	text-align: center;
+	color: #fefefe;
+	font-family: 'Roboto', sans-serif;
+}
+
+.call-button {
+	background-color: #34a827;
+	border: none;
+	padding: 0.2rem 1.5rem;
+	border-radius: 7px;
+}
+
+.call-button:hover {
+	background-color: #34a844;
+}
+
+.copyButton {
+	max-width: 154px;
+}
+
+.logoutButton {
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	border: 2px solid #fefefe;
+	background: transparent;
+	color: #fefefe;
+	border-radius: 7px;
+	padding: 3px;
+}
+
+.logoutButton:hover {
+	background-color: #fefefe;
+	color: #000000;
 }

@@ -10,7 +10,7 @@ const Login = () => {
 
 	useEffect(() => {
 		if (loading) return;
-		if (user) navigate('/Chat');
+		if (user) navigate('/QuickChat');
 	}, [user, loading, navigate]);
 
 	return (
