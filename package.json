@@ -23,10 +23,10 @@
 	},
 	"scripts": {
 		"start": "react-scripts start",
-		"build": "react-scripts start",
+		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
-		"server": "nodemon ./server/server.js"
+		"server": "react-scripts build nodemon ./server/server.js"
 	},
 	"eslintConfig": {
 		"extends": [
