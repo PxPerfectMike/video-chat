@@ -9,7 +9,7 @@ import './loading.png';
 import { motion, useDragControls } from 'framer-motion';
 import phoneIcon from './phoneIcon.svg';
 
-const socket = io.connect('process.env.PORT');
+const socket = io.connect('https://pxperfect-quick-chat.herokuapp.com/');
 
 // io.on('connection', (server) => {
 // 	server.on('disconnect', () => {
