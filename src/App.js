@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Chat from './Chat';
-import Login from './Login';
 import './App.css';
 
 function App() {
@@ -8,8 +7,7 @@ function App() {
 		<div className='App'>
 			<Router>
 				<Routes>
-					<Route path='/' element={<Login />} />
-					<Route path='/QuickChat' element={<Chat />} />
+					<Route path='/' element={<Chat />} />
 				</Routes>
 			</Router>
 		</div>

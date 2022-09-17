@@ -3,10 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Peer from 'simple-peer';
 import io from 'socket.io-client';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth, logout, db } from './firebase';
-import { query, collection, getDocs, where } from 'firebase/firestore';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import './App.css';
 import './loading.png';
 import { motion, useDragControls } from 'framer-motion';
@@ -21,8 +18,7 @@ const socket = io.connect('http://localhost:5000');
 // });
 
 const Chat = () => {
-	const [user, loading] = useAuthState(auth);
-	const navigate = useNavigate();
+	// const navigate = useNavigate();
 	const [me, setMe] = useState('');
 	const [stream, setStream] = useState();
 	const [receivingCall, setReceivingCall] = useState(false);
@@ -32,7 +28,7 @@ const Chat = () => {
 	const [idToCall, setIdToCall] = useState('');
 	const [callEnded, setCallEnded] = useState(false);
 	const [name, setName] = useState('');
-	const myVideo = useRef();
+	const myVideo = useRef(null);
 	const userVideo = useRef();
 	const connectionRef = useRef();
 	// trim session id to 7 characters
@@ -40,30 +36,28 @@ const Chat = () => {
 	const [inACall, setInACall] = useState(false);
 	const [yOffset, setYOffset] = useState(0);
 
-	const fetchUserName = async () => {
-		try {
-			const q = query(collection(db, 'users'), where('uid', '==', user?.uid));
-			const doc = await getDocs(q);
-			const data = doc.docs[0].data();
-			setName(data.name);
-		} catch (err) {
-			console.error(err);
-			alert('An error occured while fetching user data');
-		}
-	};
 	useEffect(() => {
-		if (loading) return;
-		if (!user) return navigate('/');
-		fetchUserName();
-	}, [user, loading, navigate]);
-
-	useEffect(() => {
-		navigator.mediaDevices
-			.getUserMedia({ video: true, audio: true })
-			.then((stream) => {
+		const getUserMedia = async () => {
+			try {
+				const stream = await navigator.mediaDevices.getUserMedia({
+					video: true,
+					audio: true,
+				});
 				setStream(stream);
-				myVideo.current.srcObject = stream;
-			});
+				if (myVideo.current) {
+					myVideo.current.srcObject = stream;
+				}
+			} catch (err) {
+				console.log(err);
+			}
+		};
+		getUserMedia();
+		// navigator.mediaDevices
+		// 	.getUserMedia({ video: true, audio: true })
+		// 	.then((stream) => {
+		// 		setStream(stream);
+		// 		myVideo.current.srcObject = stream;
+		// 	});
 
 		socket.on('callUser', (data) => {
 			setReceivingCall(true);
@@ -76,28 +70,7 @@ const Chat = () => {
 	socket.on('me', (id) => {
 		setMe(id);
 		setSessionId(id);
-		console.log(me, id);
 	});
-
-	// const windowReload = () => {
-	// 	window.location.reload();
-	// };
-
-	// socket.on('callEnded', () => {
-	// 	setCallEnded(true);
-	// 	setReceivingCall(false);
-	// 	setCallAccepted(false);
-	// 	setInACall(false);
-	// 	if (connectionRef.current) {
-	// 		connectionRef.current.destroy();
-	// 	}
-	// });
-
-	// useEffect(() => {
-	// 	if (callEnded) {
-	// 		window.location.reload();
-	// 	}
-	// });
 
 	const callUser = (id) => {
 		setInACall(true);
@@ -147,6 +120,7 @@ const Chat = () => {
 
 	const leaveCall = () => {
 		setCallEnded(true);
+		setInACall(false);
 		connectionRef.current.destroy();
 		window.location.reload();
 	};
@@ -155,7 +129,7 @@ const Chat = () => {
 		if (window.innerWidth < 500) {
 			setYOffset('118%');
 		} else {
-			setYOffset('188%');
+			setYOffset('170%');
 		}
 	};
 
@@ -199,9 +173,10 @@ const Chat = () => {
 	};
 
 	const hideDuringCall = () => {
+		//&& nameinput length = 20
 		if (inACall) {
 			return 'hidden';
-		} else {
+		} else if (!inACall) {
 			return 'visible';
 		}
 	};
@@ -297,9 +272,7 @@ const Chat = () => {
 						</div>
 					) : null}
 				</div>
-				<button className='logoutButton' onClick={logout}>
-					Logout
-				</button>
+
 				<p className='myIdText'>Session ID: {sessionId}</p>
 			</div>
 		</>
