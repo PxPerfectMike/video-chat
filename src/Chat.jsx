@@ -8,8 +8,9 @@ import './App.css';
 import './loading.png';
 import { motion, useDragControls } from 'framer-motion';
 import phoneIcon from './phoneIcon.svg';
+import PORT from './server';
 
-const socket = io.connect('http://localhost:5000');
+const socket = io.connect(PORT);
 
 // io.on('connection', (server) => {
 // 	server.on('disconnect', () => {
