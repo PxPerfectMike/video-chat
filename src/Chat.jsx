@@ -14,7 +14,13 @@ import phoneIcon from './phoneIcon.svg';
 
 const socket = io.connect('http://localhost:5000');
 
-export default function Chat() {
+// io.on('connection', (server) => {
+// 	server.on('disconnect', () => {
+// 		window.location.reload();
+// 	});
+// });
+
+const Chat = () => {
 	const [user, loading] = useAuthState(auth);
 	const navigate = useNavigate();
 	const [me, setMe] = useState('');
@@ -31,6 +37,8 @@ export default function Chat() {
 	const connectionRef = useRef();
 	// trim session id to 7 characters
 	const [sessionId, setSessionId] = useState('');
+	const [inACall, setInACall] = useState(false);
+	const [yOffset, setYOffset] = useState(0);
 
 	const fetchUserName = async () => {
 		try {
@@ -71,7 +79,28 @@ export default function Chat() {
 		console.log(me, id);
 	});
 
+	// const windowReload = () => {
+	// 	window.location.reload();
+	// };
+
+	// socket.on('callEnded', () => {
+	// 	setCallEnded(true);
+	// 	setReceivingCall(false);
+	// 	setCallAccepted(false);
+	// 	setInACall(false);
+	// 	if (connectionRef.current) {
+	// 		connectionRef.current.destroy();
+	// 	}
+	// });
+
+	// useEffect(() => {
+	// 	if (callEnded) {
+	// 		window.location.reload();
+	// 	}
+	// });
+
 	const callUser = (id) => {
+		setInACall(true);
 		const peer = new Peer({
 			initiator: true,
 			trickle: false,
@@ -99,6 +128,7 @@ export default function Chat() {
 
 	const answerCall = () => {
 		setCallAccepted(true);
+		setInACall(true);
 		const peer = new Peer({
 			initiator: false,
 			trickle: false,
@@ -121,36 +151,38 @@ export default function Chat() {
 		window.location.reload();
 	};
 
+	const offsetSetter = () => {
+		if (window.innerWidth < 500) {
+			setYOffset('118%');
+		} else {
+			setYOffset('188%');
+		}
+	};
+
 	if (sessionId.length > 7) {
 		setSessionId(sessionId.slice(0, 7));
 	}
 
-	// function appendSessionIdToUrlOnPageLoad() {
-	// 	const url = window.location.href;
-	// 	const newUrl = url.replace(/QuickChat/g, 'abc123');
-	// 	window.history.replaceState({}, document.title, newUrl);
-	// }
-
 	const controls = useDragControls();
 
-	function startDrag(event) {
+	const startDrag = (event) => {
 		controls.start(event, { snapToCursor: false });
-	}
+	};
 
-	function DragBounds() {
-		const halfheight = window.innerHeight * 0.5;
-		const halfWidth = window.innerWidth * 0.5;
+	const DragBounds = () => {
+		const halfheight = window.innerHeight * 0.38;
+		const halfWidth = window.innerWidth * 0.35;
 		return {
 			right: halfWidth,
 			left: -halfWidth,
-			top: -halfheight,
-			bottom: halfheight,
+			top: -halfheight - 270,
+			bottom: halfheight - 250,
 		};
-	}
+	};
 
 	let sessionIdexists = false;
 
-	function obtainCallId() {
+	const obtainCallId = () => {
 		if (sessionId === '') {
 			sessionIdexists = false;
 			return 'Obtain Call ID';
@@ -158,17 +190,25 @@ export default function Chat() {
 			sessionIdexists = true;
 			return 'Share Call ID';
 		}
-	}
+	};
 
-	function reloadIfNoSessionId() {
+	const reloadIfNoSessionId = () => {
 		if (sessionIdexists === false) {
 			window.location.reload();
 		}
-	}
+	};
+
+	const hideDuringCall = () => {
+		if (inACall) {
+			return 'hidden';
+		} else {
+			return 'visible';
+		}
+	};
 
 	return (
 		<>
-			<div className='container' id='bgGradient'>
+			<div className='container' id='bgGradient' onLoad={offsetSetter}>
 				<div className='headerDiv'>
 					<h1 className='titleHeader'>Quick Chat</h1>
 				</div>
@@ -189,6 +229,7 @@ export default function Chat() {
 
 				<motion.div
 					className='userWindow'
+					style={{ translateY: yOffset }}
 					onPointerDown={startDrag}
 					drag
 					dragControls={controls}
@@ -211,7 +252,10 @@ export default function Chat() {
 					) : null}
 				</motion.div>
 				<div className='myId'>
-					<div className='ShareEnterId'>
+					<div
+						className='ShareEnterId'
+						style={{ visibility: hideDuringCall() }}
+					>
 						<CopyToClipboard text={me}>
 							<button onClick={reloadIfNoSessionId} className='copyButton'>
 								{obtainCallId()}
@@ -226,7 +270,6 @@ export default function Chat() {
 							placeholder='Enter Call ID'
 							value={idToCall}
 							onChange={(e) => setIdToCall(e.target.value)}
-							setInheritedSessionId={idToCall.slice(0, 7)}
 						/>
 					</div>
 
@@ -261,4 +304,6 @@ export default function Chat() {
 			</div>
 		</>
 	);
-}
+};
+
+export default Chat;
